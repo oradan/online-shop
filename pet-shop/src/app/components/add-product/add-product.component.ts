@@ -3,6 +3,7 @@ import {NgForm} from '@angular/forms'
 import { Product } from '../../models/product';
 import { DatabaseService } from '../../services/database.service';
 import { TrackerError } from '../../models/traker-error';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-product',
@@ -12,17 +13,20 @@ import { TrackerError } from '../../models/traker-error';
 export class AddProductComponent implements OnInit {
 
   private newProduct:Product=new Product()
-  constructor(private dataservise:DatabaseService) { }
+  constructor(private dataservice:DatabaseService, private router:Router) { }
 
   
   ngOnInit() {
    console.log(this.newProduct.productDescription)
   }
   save(addProductForm:NgForm){
-    this.dataservise.addProduct(this.newProduct).subscribe(
+    this.dataservice.addProduct(this.newProduct).subscribe(
       (data:Product)=>console.log(data),
-      (err:TrackerError)=> console.log(err)
+      (err:TrackerError)=> console.log(err),
+      ()=>console.log(Response)
     )
     addProductForm.reset()
+    this.router.navigate(['/products'])
+
   }
 }

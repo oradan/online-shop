@@ -44,6 +44,15 @@ export class ListViewComponent implements OnInit {
     return ((x > y) ? -1 : ((x < y) ? 1 : 0));
   }
 
+  deleteItem(productId:number){
+    console.log(productId)
+    console.log(this.filteredProductList)
+  this.dataService.deleteProduct(productId).subscribe(
+   (data:Product)=>console.log(data),
+   (err:TrackerError)=>console.log(err.friendlyMessage)
+  )
+  }
+
   ngOnInit() {
     
     this.sortForm = this.fb.group({

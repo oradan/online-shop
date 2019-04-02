@@ -3,5 +3,6 @@ export class Product {
     productName:string;
     productPrice:number;
     productImgUrl:string;
+    shortDescription:string;
     productDescription:string;
 }

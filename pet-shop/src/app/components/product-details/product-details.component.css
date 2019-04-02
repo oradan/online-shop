@@ -1,0 +1,58 @@
+.box-item div{
+    width: 30px;
+    height: 30px;
+    border:1px solid #5b605b;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.color .box-item div{
+    border: none
+}
+.red{
+    background-color: red
+}
+.black{
+    background-color: black
+}
+.blue{
+    background-color: blue
+}
+.yellow{
+    background-color: yellow
+}
+
+.cart .btn-primary.cart-btn{
+    padding: 0 40px;
+    font-size: 20px;
+    font-weight: 600;
+}
+.cart .btn-primary.cart-btn,.cart .btn-primary.cart-wish{
+    height: 50px;
+}
+.operations .btn{
+    padding: .280rem 2rem;
+}
+
+.product-name{
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #55c2b3;
+}
+.product-price{
+    font-size: 20px;
+    font-weight: 700;
+}
+.product-availability{
+    background-color: #f5f6f5;
+    padding: 5px 30px;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+.size div:nth-child(1),.color div:nth-child(1){
+    font-weight: 500
+}
+

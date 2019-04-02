@@ -21,3 +21,53 @@ h1,h2,h3,h4,h5,h6{
     text-transform: uppercase;
     font-weight: 600;
 }
+
+.btn-primary{
+    color:white;
+    background-color: #55c2b3;
+    border-color:#55c2b3;
+}
+.btn-primary:hover {
+    color: #55c2b3;
+    background-color:white;
+    border-color: #55c2b3;
+}
+
+.btn-outline-secondary:hover {
+    color: #fff;
+    background-color: #55c2b3;
+    border-color: #55c2b3;
+}
+
+.fa, .fas {
+    font-weight: 900;
+    color: #5b605b;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active, .btn-primary:not(:disabled):not(.disabled):active, .show>.btn-primary.dropdown-toggle {
+    color: #fff;
+    background-color: #8298af;
+    border-color:#8298af;
+}
+
+.btn-primary:not(:disabled):not(.disabled).active:focus, .btn-primary:not(:disabled):not(.disabled):active:focus, .show>.btn-primary.dropdown-toggle:focus {
+    box-shadow: none;
+}
+
+.btn-primary.focus, .btn-primary:focus {
+    box-shadow: none;
+}
+
+.categories{
+    text-align: center;
+}
+
+.categories h4{
+    margin-top: 10px;
+    
+}
+
+.padding-lg-y{
+    padding-top: 80px;
+    padding-bottom: 80px;
+}

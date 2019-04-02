@@ -1,19 +1,19 @@
 <div class="container">
     <div class="col-12 col-md-8 m-auto padding-lg-y">
-        <div class="card mt-5">
+        <div class="card my-5">
             <div class="card-header">
-                Add Product
+                Update Product
             </div>
     
-            <div class="card-body">
-                <form (ngSubmit)="save(addProductForm)" novalidate  #addProductForm="ngForm">
+            <div class="card-body" *ngIf="updatedProduct">
+                <form (ngSubmit)="save(updateProductForm)" novalidate  #updateProductForm="ngForm">
                     <div class="form-group row">
                       <label class="col-sm-4 col-form-label">Product Name</label>
                       <div class="col-sm-8">
                         <input type="text"  class="form-control" 
                         required
                         name="productname"
-                        [(ngModel)]=newProduct.productName
+                        [(ngModel)]=updatedProduct.productName
                         #productNameVar="ngModel" 
                         [ngClass]="{'is-invalid':(productNameVar.touched||productNameVar.dirty) && !productNameVar.valid}"/>
                         <span class="invalid-feedback">
@@ -21,7 +21,8 @@
                                 This field is required
                               </span>
                         </span>
-                      
+
+                        
                       </div>
                     </div>
                     <div class="form-group row">
@@ -30,7 +31,7 @@
                         <input type="text"  class="form-control" 
                         required
                         name="productPrice"
-                        [(ngModel)]=newProduct.productPrice
+                        [(ngModel)]=updatedProduct.productPrice
                         #productPriceVar="ngModel" 
                         [ngClass]="{'is-invalid':(productPriceVar.touched||productPriceVar.dirty) && !productPriceVar.valid}">
                         <span *ngIf="productPriceVar.errors?.required" class="invalid-feedback">
@@ -44,7 +45,7 @@
                         <input type="text"  class="form-control" 
                         required
                         name="productImgUrl"
-                        [(ngModel)]=newProduct.productImgUrl
+                        [(ngModel)]=updatedProduct.productImgUrl
                         #productImgUrlVar="ngModel" 
                         [ngClass]="{'is-invalid':(productImgUrlVar.touched||productImgUrlVar.dirty) && !productImgUrlVar.valid}">
                         <span *ngIf="productImgUrlVar.errors?.required" class="invalid-feedback">
@@ -59,7 +60,7 @@
                           <textarea class="form-control" rows="2"
                           required
                           name="shortDescription"
-                          [(ngModel)]=newProduct.shortDescription
+                          [(ngModel)]=updatedProduct.shortDescription
                           #shortDescriptionVar="ngModel" 
                           [ngClass]="{'is-invalid':(shortDescriptionVar.touched||shortDescriptionVar.dirty) && !shortDescriptionVar.valid}"
                           ></textarea>
@@ -74,7 +75,7 @@
                         <textarea class="form-control" rows="4"
                         required
                         name="productDescription"
-                        [(ngModel)]=newProduct.productDescription
+                        [(ngModel)]=updatedProduct.productDescription
                         #productDescriptionVar="ngModel" 
                         [ngClass]="{'is-invalid':(productDescriptionVar.touched||productDescriptionVar.dirty) && !productDescriptionVar.valid}"
                         ></textarea>
@@ -83,10 +84,12 @@
                           </span>
                       </div>
                     </div>
-                    <button type="submit" class="btn btn btn-secondary ml-auto" [disabled]="!addProductForm.valid">Add Product</button>
+                    <button type="submit" class="btn btn btn-secondary ml-auto" [disabled]="!updateProductForm.valid">Update Product</button>
             </form>
             </div>
     </div>
     
      
 </div>
+</div>
+

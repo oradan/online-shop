@@ -14,6 +14,8 @@ import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { EditProductComponent } from './components/edit-product/edit-product.component';
+import { FeatureCategoriesComponent } from './components/feature-categories/feature-categories.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     LoginComponent,
     PageNotFoundComponent,
     HomeComponent,
-    AddProductComponent
+    AddProductComponent,
+    EditProductComponent,
+    FeatureCategoriesComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +40,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
       {path:'home',component: HomeComponent },
       {path:'',redirectTo:'home',pathMatch:'full'},
       {path:'products',component: ListViewComponent},
+      {path:'products/:id',component:ProductDetailsComponent},
+      {path:'products/:id/edit',component:EditProductComponent},
       {path:'add-product',component: AddProductComponent},
       {path:'orders',component: OrdersListComponent},
       {path:'login',component:LoginComponent},
