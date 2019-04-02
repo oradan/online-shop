@@ -5,13 +5,15 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { AppComponent } from './app.component';
 import { RouterModule} from '@angular/router'
 import { InMemoryDataService } from './services/in-memory-data.service';
-import {ReactiveFormsModule} from '@angular/forms'
+import { FormsModule,ReactiveFormsModule} from '@angular/forms'
 import { ListViewComponent } from './components/list-view/list-view.component';
 import { ProductDetailsComponent } from './components/product-details/product-details.component';
 import { OrdersListComponent } from './components/orders-list/orders-list.component';
 import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
     OrdersListComponent,
     LoginComponent,
     PageNotFoundComponent,
-    HomeComponent
+    HomeComponent,
+    AddProductComponent
   ],
   imports: [
     BrowserModule,
@@ -33,12 +36,16 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
       {path:'home',component: HomeComponent },
       {path:'',redirectTo:'home',pathMatch:'full'},
       {path:'products',component: ListViewComponent},
+      {path:'add-product',component: AddProductComponent},
       {path:'orders',component: OrdersListComponent},
       {path:'login',component:LoginComponent},
       {path:'**',component:PageNotFoundComponent}
 
     ]),
-    ReactiveFormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    NgbModule
+ 
   ],
   providers: [],
   bootstrap: [AppComponent]

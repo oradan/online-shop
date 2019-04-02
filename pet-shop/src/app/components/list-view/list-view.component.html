@@ -1,58 +1,57 @@
-
-
-<h2 class="text-center my-5">All products</h2>
-<div class="sort-form my-4">
-        <form class="form-row" [formGroup]="sortForm">
-               <div class="col d-flex align-items-center">
-                      <label class="my-1 mr-2" for="alph-sort">Alphabetically:</label>
-                      <select class="custom-select my-1 mr-sm-2" id="alph-sort" formControlName="alphabeticallySort">
-                        <option value="ascending">Ascending</option>
-                        <option value="descending">Descending</option>
-                      </select>
-                      <i class="fas fa-times" *ngIf="sortForm.get('alphabeticallySort').value" (click)="resetField('alphabeticallySort')"></i>     
-                </div>
-                <div class="col d-flex align-items-center">
-                      <label class="my-1 mr-2" for="price-sort">Price</label>
-                      <select class="custom-select my-1 mr-sm-2" id="price-sort" formControlName="priceSort">
-                      <option vallue="none">None</option>
-                      <option value="ascending">Ascending</option>
-                      <option value="descending">Descending</option>
-                    </select>
-                    <i class="fas fa-times" *ngIf="sortForm.get('priceSort').value" (click)="resetField('priceSort')"></i>     
-                </div>
-                <div class="col d-flex align-items-center">
-                      <input class="form-control mr-2" type="text" placeholder="Search" formControlName="search">
-                      <i class="fas fa-times" *ngIf="sortForm.get('search').value" (click)="resetField('search')"></i>     
-                </div>
-                <div class="col-2 d-flex align-items-center">
-                        <button type="button" class="btn btn-outline-secondary" (click)="resetFilter()">Reset filter</button>
-                </div>
-            </form>
- <!-- <div *ngIf="!filteredProductList" class="text-center text-danger">No match result</div> -->
-</div>
-  <p>{{sortForm.get('alphabeticallySort').value}} Alphabetically</p>
-  <p>{{sortForm.get('priceSort').value}} price sort</p>
-  <p>{{sortForm.get('search').value}} search</p>
-<div class="row"  >
-    
-    <div class="home-main col-12  col-md-6 col-lg-4 col-xl-3 my-2" *ngFor="let product of filteredProductList">
-        <div class="card m-auto" style="width: 16rem;">
-            <img class="card-img-top" src={{product.productImgUrl}} alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title mt-1">{{product.productName}}</h5>
-              <p class="card-text">{{product.productDescription}}</p>
-              <h5>{{product.productPrice}} <span>RON</span></h5>
-            </div>
-            <div class="card-footer d-flex">
-              <div class="col">
-                  <i class="fas fa-cart-plus fa-2x"></i>
-              </div>
-              <div class="col">
-                  <button type="button" class="btn btn-outline-secondary">Details</button>
-              </div>
-            </div>
-          </div>
+<div class="container">
+    <h2 class="text-center my-5">All products</h2>
+    <div class="sort-form my-4">
+            <form class="form-row" [formGroup]="sortForm">
+                   <div class="col d-flex align-items-center">
+                          <label class="my-1 mr-2" for="alph-sort">Alphabetically:</label>
+                          <select class="custom-select my-1 mr-sm-2" id="alph-sort" formControlName="alphabeticallySort">
+                            <option value="ascending">Ascending</option>
+                            <option value="descending">Descending</option>
+                          </select>
+                          <i class="fas fa-times" *ngIf="sortForm.get('alphabeticallySort').value" (click)="resetField('alphabeticallySort')"></i>     
+                    </div>
+                    <div class="col d-flex align-items-center">
+                          <label class="my-1 mr-2" for="price-sort">Price</label>
+                          <select class="custom-select my-1 mr-sm-2" id="price-sort" formControlName="priceSort">
+                          <option vallue="none">None</option>
+                          <option value="ascending">Ascending</option>
+                          <option value="descending">Descending</option>
+                        </select>
+                        <i class="fas fa-times" *ngIf="sortForm.get('priceSort').value" (click)="resetField('priceSort')"></i>     
+                    </div>
+                    <div class="col d-flex align-items-center">
+                          <input class="form-control mr-2" type="text" placeholder="Search" formControlName="search">
+                          <i class="fas fa-times" *ngIf="sortForm.get('search').value" (click)="resetField('search')"></i>     
+                    </div>
+                    <div class="col-2 d-flex align-items-center">
+                            <button type="button" class="btn btn-outline-secondary" (click)="resetFilter()">Reset filter</button>
+                    </div>
+                </form>
+     <!-- <div *ngIf="!filteredProductList" class="text-center text-danger">No match result</div> -->
     </div>
+    <div class="row"  >
+        
+        <div class="home-main col-12  col-md-6 col-lg-4 col-xl-3 my-2" *ngFor="let product of filteredProductList">
+            <div class="card m-auto" style="width: 16rem;">
+                <img class="card-img-top" src={{product.productImgUrl}} alt="Card image cap">
+                <div class="card-body">
+                  <h5 class="card-title mt-1">{{product.productName}}</h5>
+                  <p class="card-text">{{product.productDescription}}</p>
+                  <h5>{{product.productPrice}} <span>RON</span></h5>
+                </div>
+                <div class="card-footer d-flex">
+                  <div class="col">
+                      <i class="fas fa-cart-plus fa-2x"></i>
+                  </div>
+                  <div class="col">
+                      <button type="button" class="btn btn-outline-secondary">Details</button>
+                  </div>
+                </div>
+              </div>
+        </div>
+        
+    </div>
+    
     
 </div>
 

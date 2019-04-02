@@ -1,10 +1,16 @@
 
-<nav class="nav">
-  <a class="nav-link active" [routerLink]='["/home"]'>Home</a>
-  <a class="nav-link" [routerLink]="['/products']">Products</a>
-  <a class="nav-link" [routerLink]="['/orders']">Orders</a>
-  <a class="nav-link ml-auto" [routerLink]="['/login']">Login</a>
-</nav>
-<div class="container">
+
+<div class="nab-bar">
+  <nav class="nav">
+    <a class="nav-link active" [routerLink]='["/home"]'>Home</a>
+    <a class="nav-link" [routerLink]="['/products']">Products</a>
+    <a class="nav-link" [routerLink]="['/orders']">Orders</a>
+    <a class="nav-link" [routerLink]="['/add-product']">Add Product</a>
+    <a class="nav-link ml-auto" [routerLink]="['/login']">Login</a>
+  </nav>
+</div>
+
+<div >
     <router-outlet></router-outlet>
 </div>
+<dir class="footer"></dir>

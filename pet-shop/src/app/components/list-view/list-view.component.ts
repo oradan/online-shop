@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Product } from 'src/app/models/product';
 import { TrackerError } from 'src/app/models/traker-error';
-import {FormGroup, FormControl,FormBuilder} from '@angular/forms'
+import {FormGroup,FormBuilder} from '@angular/forms'
 
 
 
@@ -15,8 +15,6 @@ export class ListViewComponent implements OnInit {
   private sortForm:FormGroup;
   private products:Product[];
   private filteredProductList:Product[];
-  private sortByPrice:Product[];
-  private sortAlphabeticaly: Product[];
   constructor(private dataService: DatabaseService, private fb:FormBuilder) {
    }
 
@@ -74,7 +72,6 @@ export class ListViewComponent implements OnInit {
         switch(value){
           case "ascending":
           this.filteredProductList=this.filteredProductList.slice(0).sort((a,b)=>a.productPrice-b.productPrice)
-          console.log("hjghjgfdsh")
           break;
           case "descending":
           this.filteredProductList=this.filteredProductList.slice(0).sort((a,b)=>b.productPrice-a.productPrice)
