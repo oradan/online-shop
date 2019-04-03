@@ -1,5 +1,5 @@
-<div class="container" *ngIf="product">
-  <h3 class="text-center my-3">Product details</h3>
+<div class="container margin-top-lg" *ngIf="product">
+  <h3 class="text-center mb-3 ">Product details</h3>
   <div class="operations mb-3">
       <button type="button" class="btn btn-primary" (click)="deleteProduct()">Delete</button>
       <button type="button" class="btn btn-primary ml-3" [routerLink]="['/products',product.id,'edit']">Update</button>
