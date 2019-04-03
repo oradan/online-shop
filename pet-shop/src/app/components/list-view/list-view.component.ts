@@ -15,6 +15,8 @@ export class ListViewComponent implements OnInit {
   private sortForm:FormGroup;
   private products:Product[];
   private filteredProductList:Product[];
+  private page:number=1;
+  private pageSize:number=4;
   constructor(private dataService: DatabaseService, private fb:FormBuilder) {
    }
 
@@ -26,12 +28,18 @@ export class ListViewComponent implements OnInit {
   resetField(field:string){
    this.sortForm.get(field).reset()
   }
+
+  
   searchFilter(searchBy?:string):void{
   if(searchBy){
     searchBy=searchBy.toLocaleLowerCase()
     this.filteredProductList = this.products.filter(
        (product:Product)=>product.productName.toLocaleLowerCase().indexOf(searchBy)!==-1)
-   }else{ this.filteredProductList=this.products}
+
+   }else{ 
+     this.filteredProductList=this.products
+   
+    }
   }
   sortAlphabeticalyAscending(a:any,b:any){
     var x = a.productName.toLowerCase();
@@ -44,13 +52,20 @@ export class ListViewComponent implements OnInit {
     return ((x > y) ? -1 : ((x < y) ? 1 : 0));
   }
 
-  deleteItem(productId:number){
-    console.log(productId)
-    console.log(this.filteredProductList)
-  this.dataService.deleteProduct(productId).subscribe(
-   (data:Product)=>console.log(data),
-   (err:TrackerError)=>console.log(err.friendlyMessage)
-  )
+  deleteItemFrontEnd(productId:number):void{
+  const deletedProduct=this.filteredProductList.find((product:Product)=>product.id===productId)
+  this.filteredProductList.splice(this.filteredProductList.indexOf(deletedProduct),1)
+  
+ }
+
+  deleteItemDataBase(productId:number,productName:string){
+  if(confirm(`Realy delete the product :${productName}`)){
+    this.dataService.deleteProduct(productId).subscribe(
+      (data:Product)=>this.deleteItemFrontEnd(productId),
+      (err:TrackerError)=>console.log(err.friendlyMessage)
+     )
+  }
+  
   }
 
   ngOnInit() {
@@ -97,6 +112,7 @@ export class ListViewComponent implements OnInit {
       (data:Product[])=>{
        this.products=data;
        this.filteredProductList=data 
+       
         },
       (err:TrackerError)=>console.log(err.friendlyMessage)
 

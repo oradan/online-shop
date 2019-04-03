@@ -1,5 +1,8 @@
-<div class="container">
-    <h2 class="text-center my-5">All products</h2>
+<div class="banner">
+</div>
+
+<div class="container margin-top-lg">
+    <h2 class="text-center my-5">Our products</h2>
     <div class="sort-form my-4">
             <form class="form-row" [formGroup]="sortForm">
                    <div class="col d-flex align-items-center">
@@ -31,7 +34,7 @@
     </div>
     <div class="row"  >
         
-        <div class="home-main col-12  col-md-6 col-lg-4 col-xl-3 my-2" *ngFor="let product of filteredProductList">
+        <div class="home-main col-12  col-md-6 col-lg-4 col-xl-3 my-2" *ngFor="let product of filteredProductList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
             <div class="card m-auto" style="width: 16rem;">
                 <img class="card-img-top" src={{product.productImgUrl}} alt="Card image cap">
                 <div class="card-body">
@@ -47,12 +50,17 @@
             
                             <button type="button" class="btn btn-outline-secondary"  [routerLink]="['/products',product.id]">Details</button>
                             <button type="button" class="btn btn-outline-secondary ml-2"  [routerLink]="['/products',product.id,'edit']">Edit</button>
-                            <button type="button" class="btn btn-outline-secondary ml-2" (click)="deleteItem(product.id)">Delete</button>
+                            <button type="button" class="btn btn-outline-secondary ml-2" (click)="deleteItemDataBase(product.id,product.productName)">Delete</button>
         
                   </div>
                 </div>
               </div>
+            
+                           
+       
+  
         </div>
-        
+
+        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="filteredProductList.length" class="d-flex justify-content-center my-5" ></ngb-pagination>
     </div>
 

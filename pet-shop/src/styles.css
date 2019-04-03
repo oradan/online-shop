@@ -7,8 +7,9 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .nab-bar,.footer{
-    background-color: #55c2b3;
+    background-color:black;
     color:white;
+    padding: 15px 0px;
 }
 
 .footer{
@@ -17,9 +18,8 @@ h1,h2,h3,h4,h5,h6{
 }
 .nab-bar a{
     color: white;
-    font-size: 17px;
+    font-size: 15px;
     text-transform: uppercase;
-    font-weight: 600;
 }
 
 .btn-primary{
@@ -71,3 +71,26 @@ h1,h2,h3,h4,h5,h6{
     padding-top: 80px;
     padding-bottom: 80px;
 }
+
+.page-item.active .page-link{
+    z-index: 1;
+    color: #fff;
+    background-color: #55c2b3;
+    border-color: #55c2b3;
+}
+.page-link{
+    color:#5b605b;
+}
+.margin-top-lg{
+    margin-top: 80px
+}
+
+.banner{
+    height: 400px;
+    background-image: url("assets/images/banner.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
