@@ -1,7 +1,7 @@
 <div class="banner">
 </div>
 
-<div class="container margin-top-lg">
+<div class="container margin-top-lg" *ngIf="filteredProductList">
     <h2 class="text-center my-5">Our products</h2>
     <div class="sort-form my-4">
             <form class="form-row" [formGroup]="sortForm">
@@ -32,7 +32,7 @@
                 </form>
      <!-- <div *ngIf="!filteredProductList" class="text-center text-danger">No match result</div> -->
     </div>
-    <div class="row"  >
+    <div class="row" >
         
         <div class="home-main col-12  col-md-6 col-lg-4 col-xl-3 my-2" *ngFor="let product of filteredProductList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
             <div class="card m-auto" style="width: 16rem;">

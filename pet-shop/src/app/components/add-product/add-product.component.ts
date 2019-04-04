@@ -17,7 +17,7 @@ export class AddProductComponent implements OnInit {
 
   
   ngOnInit() {
-   console.log(this.newProduct.productDescription)
+  
   }
   save(addProductForm:NgForm){
     this.dataservice.addProduct(this.newProduct).subscribe(

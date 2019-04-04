@@ -6,7 +6,8 @@
     <a class="nav-link" [routerLink]="['/products']">Products</a>
     <a class="nav-link" [routerLink]="['/orders']">Orders</a>
     <a class="nav-link" [routerLink]="['/add-product']">Add Product</a>
-    <a class="nav-link ml-auto" [routerLink]="['/login']">Login</a>
+     <a class="nav-link ml-auto" [routerLink]="['/login']">Login</a>
+    <a class="nav-link ml-auto" (click)="logout()">Log Out</a>
   </nav>
 </div>
 

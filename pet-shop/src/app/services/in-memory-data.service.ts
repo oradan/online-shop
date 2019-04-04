@@ -3,6 +3,7 @@ import {InMemoryDbService} from 'angular-in-memory-web-api'
 import { Product } from '../models/product';
 import { User } from '../models/user';
 import { Order } from '../models/order';
+import { UserAuth } from '../models/userauth';
 
 
 @Injectable({
@@ -87,16 +88,12 @@ export class InMemoryDataService implements InMemoryDbService {
     const users: User[]=[
       {
       id:11,
-      name:"Radan Olga",
       userName:"radanolga",
-      email:"plotnica@yahoo.com",
       password:"plusminus1"
      },
      {
       id:12,
-      name:"Fabiana Panait",
       userName:"fabianapanait",
-      email:"fabianapanait@yahoo.com",
       password:"plusminustest"
     }
      ]
@@ -109,6 +106,30 @@ export class InMemoryDataService implements InMemoryDbService {
       schippingAdress:"Shipping Addres",
       urderedItems:[{productId:9,productPrice:88, productQuantity:2},{productId:5,productPrice:78, productQuantity:3}]
     }]
-    return {products,users,orders}
+
+    const loginObjects:UserAuth[]=[{
+      id:11,
+      userFullName:"Radan Olga",
+      userName:"olgaradan",
+      password:"olgaradan",
+      authToken:"fhgkfh7ugd4",
+      isAuthenticated:true,
+      canAddProducts:true,
+      canDeleteProducts:true,
+      canUpdateProducts:true,
+    },
+    {
+      id:12,
+      userFullName:"Fabiana Panait",
+      userName:"fabianapanait",
+      password:"fabianapanait",
+      authToken:"hgdfsa5218jjgh",
+      isAuthenticated:true,
+      canAddProducts:false,
+      canDeleteProducts:false,
+      canUpdateProducts:false,
+    }
+    ]
+    return {products,users,orders,loginObjects}
   }
 }

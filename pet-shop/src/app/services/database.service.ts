@@ -5,6 +5,7 @@ import {catchError} from 'rxjs/operators'
 import { TrackerError } from '../models/traker-error';
 import { Product } from '../models/product';
 import { Order } from '../models/order';
+import { UserAuth } from '../models/userauth';
 @Injectable({
   providedIn: 'root'
 })
@@ -65,5 +66,14 @@ export class DatabaseService {
     .pipe(
       catchError(error=>this.httpErrorhandler(error))
     )
+  }
+
+  getAllUserAuth():Observable<UserAuth[]|TrackerError>{
+    const dataUrl=`api/loginObjects`;
+    return this.http.get<UserAuth[]>(dataUrl)
+    .pipe(
+      catchError(error=>this.httpErrorhandler(error))
+    )
+
   }
 }
