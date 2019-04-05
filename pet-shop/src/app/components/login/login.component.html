@@ -15,6 +15,7 @@
                       name="username"
                       [(ngModel)]=user.userName
                       #usernameVar="ngModel" 
+                      autofocus="autofocus"
                       [ngClass]="{'is-invalid':(usernameVar.touched||usernameVar.dirty) && !usernameVar.valid}"/>
                       <span class="invalid-feedback">
                           <span *ngIf="usernameVar.errors?.required" >
@@ -32,6 +33,7 @@
                       name="password"
                       [(ngModel)]=user.password
                       #passwordVar="ngModel" 
+                      type="password"
                       [ngClass]="{'is-invalid':(passwordVar.touched||passwordVar.dirty) && !passwordVar.valid}">
                       <span *ngIf="passwordVar.errors?.required" class="invalid-feedback">
                           This field is required

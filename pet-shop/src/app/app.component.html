@@ -4,10 +4,13 @@
   <nav class="nav">
     <a class="nav-link active" [routerLink]='["/home"]'>Home</a>
     <a class="nav-link" [routerLink]="['/products']">Products</a>
-    <a class="nav-link" [routerLink]="['/orders']">Orders</a>
-    <a class="nav-link" [routerLink]="['/add-product']">Add Product</a>
-     <a class="nav-link ml-auto" [routerLink]="['/login']">Login</a>
-    <a class="nav-link ml-auto" (click)="logout()">Log Out</a>
+    <a class="nav-link" [routerLink]="['/orders']" *ngIf="userAuthObject.hasAdminRole">Orders</a>
+    <a class="nav-link" [routerLink]="['/add-product']" *ngIf="userAuthObject.hasAdminRole">Add Product</a>
+    <div class="ml-auto nav">
+      <a class="nav-link"  *ngIf="userAuthObject.userFullName">{{userAuthObject.userFullName}}</a>
+      <a class="nav-link" [routerLink]="['/login']" *ngIf="!userAuthObject.isAuthenticated">Login</a>
+      <a class="nav-link"  (click)="logout()" *ngIf="userAuthObject.isAuthenticated">Log Out</a>
+    </div>
   </nav>
 </div>
 

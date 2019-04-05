@@ -47,11 +47,10 @@
                   
                 </div>
                 <div class="card-footer d-flex">
-            
                             <button type="button" class="btn btn-outline-secondary"  [routerLink]="['/products',product.id]">Details</button>
-                            <button type="button" class="btn btn-outline-secondary ml-2"  [routerLink]="['/products',product.id,'edit']">Edit</button>
-                            <button type="button" class="btn btn-outline-secondary ml-2" (click)="deleteItemDataBase(product.id,product.productName)">Delete</button>
-        
+                            <button type="button" class="btn btn-outline-secondary ml-2"  [routerLink]="['/products',product.id,'edit']" *ngIf="userAuthObject.hasAdminRole">Edit</button>
+                            <button type="button" class="btn btn-outline-secondary ml-2" (click)="deleteItemDataBase(product.id,product.productName) " *ngIf="userAuthObject.hasAdminRole">Delete</button>
+                 
                   </div>
                 </div>
               </div>

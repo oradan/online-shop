@@ -109,25 +109,21 @@ export class InMemoryDataService implements InMemoryDbService {
 
     const loginObjects:UserAuth[]=[{
       id:11,
-      userFullName:"Radan Olga",
+      userFullName:"Radan Olga (admin)",
       userName:"olgaradan",
-      password:"olgaradan",
+      password:"1234",
       authToken:"fhgkfh7ugd4",
       isAuthenticated:true,
-      canAddProducts:true,
-      canDeleteProducts:true,
-      canUpdateProducts:true,
+      hasAdminRole:true,
     },
     {
       id:12,
-      userFullName:"Fabiana Panait",
+      userFullName:"Fabiana Panait (user)",
       userName:"fabianapanait",
-      password:"fabianapanait",
+      password:"1234",
       authToken:"hgdfsa5218jjgh",
       isAuthenticated:true,
-      canAddProducts:false,
-      canDeleteProducts:false,
-      canUpdateProducts:false,
+      hasAdminRole:false,
     }
     ]
     return {products,users,orders,loginObjects}

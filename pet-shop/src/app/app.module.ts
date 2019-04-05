@@ -16,6 +16,7 @@ import { AddProductComponent } from './components/add-product/add-product.compon
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { FeatureCategoriesComponent } from './components/feature-categories/feature-categories.component';
+import { AuthGuard } from './services/auth.guard';
 
 @NgModule({
   declarations: [
@@ -41,9 +42,9 @@ import { FeatureCategoriesComponent } from './components/feature-categories/feat
       {path:'',redirectTo:'home',pathMatch:'full'},
       {path:'products',component: ListViewComponent},
       {path:'products/:id',component:ProductDetailsComponent},
-      {path:'products/:id/edit',component:EditProductComponent},
-      {path:'add-product',component: AddProductComponent},
-      {path:'orders',component: OrdersListComponent},
+      {path:'products/:id/edit',component:EditProductComponent,canActivate:[AuthGuard],data:{rulesToActivate:"hasAdminRole"}},
+      {path:'add-product',component: AddProductComponent,canActivate:[AuthGuard],data:{rulesToActivate:"hasAdminRole"}},
+      {path:'orders',component: OrdersListComponent,canActivate:[AuthGuard],data:{rulesToActivate:"hasAdminRole"}},
       {path:'login',component:LoginComponent},
       {path:'**',component:PageNotFoundComponent}
 

@@ -4,9 +4,6 @@ export class UserAuth {
     userName: string="";
     password:string="";
     authToken: string="";
-    
     isAuthenticated: boolean=false;
-    canAddProducts: boolean=false;
-    canDeleteProducts:boolean=false;
-    canUpdateProducts:boolean=false;
+    hasAdminRole:boolean=false
 }

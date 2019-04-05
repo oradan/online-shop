@@ -3,6 +3,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Product } from 'src/app/models/product';
 import { TrackerError } from 'src/app/models/traker-error';
+import { SecurityServiceService } from '../../services/security-service.service';
+import { UserAuth } from '../../models/userauth';
 
 @Component({
   selector: 'app-product-details',
@@ -10,8 +12,11 @@ import { TrackerError } from 'src/app/models/traker-error';
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit {
-  private product:Product
-  constructor(private route: ActivatedRoute , private dataservice: DatabaseService, private router: Router) { }
+  private product:Product;
+  private userAuthObject:UserAuth=null
+  constructor(private route: ActivatedRoute , private dataservice: DatabaseService, private router: Router, private securityService:SecurityServiceService) { 
+  this.userAuthObject=securityService.userAuthObject
+  }
 
 deleteProduct():void{
   if(confirm(`Realy delete the product :${this.product.productName}`)){

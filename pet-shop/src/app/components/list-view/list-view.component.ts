@@ -3,6 +3,8 @@ import { DatabaseService } from 'src/app/services/database.service';
 import { Product } from 'src/app/models/product';
 import { TrackerError } from 'src/app/models/traker-error';
 import {FormGroup,FormBuilder} from '@angular/forms'
+import { UserAuth } from '../../models/userauth';
+import { SecurityServiceService } from '../../services/security-service.service';
 
 
 
@@ -17,7 +19,9 @@ export class ListViewComponent implements OnInit {
   private filteredProductList:Product[];
   private page:number=1;
   private pageSize:number=4;
-  constructor(private dataService: DatabaseService, private fb:FormBuilder) {
+  private userAuthObject:UserAuth=null
+  constructor(private dataService: DatabaseService, private fb:FormBuilder,private securityService:SecurityServiceService ) {
+    this.userAuthObject=this.securityService.userAuthObject
    }
 
 

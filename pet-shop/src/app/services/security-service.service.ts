@@ -19,9 +19,7 @@ export class SecurityServiceService {
     this.userAuthObject.password="";
     this.userAuthObject.authToken="";
     this.userAuthObject.isAuthenticated=false;
-    this.userAuthObject.canAddProducts=false;
-    this.userAuthObject.canDeleteProducts=false;
-    this.userAuthObject.canUpdateProducts=false;
+    this.userAuthObject.hasAdminRole=false,
     localStorage.removeItem("authToken")
   }
 
