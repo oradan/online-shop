@@ -5,6 +5,8 @@ import { TrackerError } from 'src/app/models/traker-error';
 import {FormGroup,FormBuilder} from '@angular/forms'
 import { UserAuth } from '../../models/userauth';
 import { SecurityServiceService } from '../../services/security-service.service';
+import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { OrderedItem } from 'src/app/models/ordered-item';
 
 
 
@@ -20,7 +22,10 @@ export class ListViewComponent implements OnInit {
   private page:number=1;
   private pageSize:number=4;
   private userAuthObject:UserAuth=null
-  constructor(private dataService: DatabaseService, private fb:FormBuilder,private securityService:SecurityServiceService ) {
+  constructor(private dataService: DatabaseService, 
+    private fb:FormBuilder,
+    private securityService:SecurityServiceService,
+    private cartService:ShoppingCartService ) {
     this.userAuthObject=this.securityService.userAuthObject
    }
 
@@ -70,6 +75,15 @@ export class ListViewComponent implements OnInit {
      )
   }
   
+  }
+
+  addToCart(item:Product){
+    const orderedItem=new OrderedItem();
+    orderedItem.productId=item.id;
+    orderedItem.productName=item.productName;
+    orderedItem.productPrice=item.productPrice;
+    orderedItem.productQuantity=1;
+    this.cartService.addNewItem(orderedItem)
   }
 
   ngOnInit() {

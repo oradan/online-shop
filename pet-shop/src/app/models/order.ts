@@ -5,5 +5,6 @@ export class Order {
     userId:number;
     invoiceAddress:string;
     schippingAdress:string;
-    urderedItems:OrderedItem[];
+    orderedItems:OrderedItem[];
+    orderTotal:number;
 }

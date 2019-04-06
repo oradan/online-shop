@@ -1,5 +1,6 @@
 export class UserAuth {
     id:number=null;
+    userId=null;
     userFullName:string="";
     userName: string="";
     password:string="";

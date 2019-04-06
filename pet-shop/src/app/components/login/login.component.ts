@@ -5,6 +5,8 @@ import { SecurityServiceService } from '../../services/security-service.service'
 import { NgForm } from '../../../../node_modules/@angular/forms';
 import { Router, NavigationEnd, RoutesRecognized, ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { filter, pairwise } from '../../../../node_modules/rxjs/operators';
+import { from } from 'rxjs';
+import { TrackerError } from 'src/app/models/traker-error';
 
 @Component({
   selector: 'app-login',
@@ -12,31 +14,45 @@ import { filter, pairwise } from '../../../../node_modules/rxjs/operators';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private user: User=new User();
-  private userAuthObject : UserAuth=null;
-  private retunnUrl:string;
-  constructor(private securityservice: SecurityServiceService, private router: Router, private route: ActivatedRoute) { }
+  private user: User = new User();
+  private userAuthObject: UserAuth;
+  private returnUrl: string;
+  x: boolean = true
+  constructor(private securityservice: SecurityServiceService, private router: Router, private route: ActivatedRoute) {
 
-  logIn(loginForm: NgForm){
+  }
+
+  logIn(loginForm: NgForm) {
+
     this.securityservice.login(this.user).subscribe(
-     (data:UserAuth)=>{
-       
-        this.userAuthObject=data
-        if(this.retunnUrl){
-       // this.router.navigateByUrl(this.retunnUrl)
-        
-        this.router.navigate([this.retunnUrl])
-        console.log( this.router.navigate([this.retunnUrl]))
-       console.log(typeof(this.retunnUrl)) 
+      () => {
+
+        this.userAuthObject = this.securityservice.userAuthObject;
+
+        if (this.userAuthObject.isAuthenticated) {
+          if (this.returnUrl) {
+            this.router.navigateByUrl(this.returnUrl);
+
+          } else {
+            this.router.navigate(['/home'])
+
+          }
+
+        } else {
+          this.userAuthObject = new UserAuth()
+
+        }
+
+        loginForm.reset()
       }
-    },
-    ()=>this.userAuthObject= new UserAuth()
-    )
+    ),
+      (error: TrackerError) => console.log(error.friendlyMessage);
+
+
   }
 
   ngOnInit() {
-  this.retunnUrl=this.route.snapshot.queryParamMap.get('returnUrl')
- 
+    this.returnUrl = this.route.snapshot.queryParamMap.get("returnUrl")
   }
 
 }

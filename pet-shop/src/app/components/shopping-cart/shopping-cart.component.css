@@ -1,0 +1,9 @@
+input{
+    width: 100px;
+    margin: auto;
+}
+
+.product-price{
+    font-size: 20px;
+    font-weight: 700;
+}

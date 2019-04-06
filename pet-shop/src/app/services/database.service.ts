@@ -68,12 +68,4 @@ export class DatabaseService {
     )
   }
 
-  getAllUserAuth():Observable<UserAuth[]|TrackerError>{
-    const dataUrl=`api/loginObjects`;
-    return this.http.get<UserAuth[]>(dataUrl)
-    .pipe(
-      catchError(error=>this.httpErrorhandler(error))
-    )
-
-  }
 }

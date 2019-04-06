@@ -94,3 +94,24 @@ h1,h2,h3,h4,h5,h6{
     
 }
 
+.card-header {
+    padding: .75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(85, 194, 179, 0.9);
+    border-bottom: 2px solid rgb(0, 0, 0);
+    color: white;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.btn-secondary {
+    color: #fff;
+    background-color: #000000;
+    border-color: #000000;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    background-color: #000000;
+    border-color: #000000;
+}
