@@ -7,6 +7,7 @@ import { UserAuth } from '../../models/userauth';
 import { SecurityServiceService } from '../../services/security-service.service';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { OrderedItem } from 'src/app/models/ordered-item';
+import { SharedPropertiesService } from 'src/app/services/shared-properties.service';
 
 
 
@@ -25,7 +26,7 @@ export class ListViewComponent implements OnInit {
   constructor(private dataService: DatabaseService, 
     private fb:FormBuilder,
     private securityService:SecurityServiceService,
-    private cartService:ShoppingCartService ) {
+    private cartService:ShoppingCartService) {
     this.userAuthObject=this.securityService.userAuthObject
    }
 

@@ -4,6 +4,7 @@ import { UserAuth } from '../models/userauth';
 import { SecurityServiceService } from './security-service.service';
 import { OrderedItem } from '../models/ordered-item';
 import { Observable, of } from 'rxjs';
+import { SharedPropertiesService } from './shared-properties.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +12,8 @@ import { Observable, of } from 'rxjs';
 export class ShoppingCartService {
 
   public order:Order=new Order()
-
-  constructor(private securityService:SecurityServiceService ) {
+  
+  constructor(private securityService:SecurityServiceService , private sharedProp: SharedPropertiesService) {
 
     this.order.id=null;
     this.order.invoiceAddress=securityService.userAuthObject.userAddress;
@@ -23,7 +24,13 @@ export class ShoppingCartService {
     this.order.saved=false
 
    }
-
+  //  get countOrderItems(){
+  //    return this.sharedProp.countOrderItems
+  //  }
+  //  set countOrderItems(value:number){
+  //    value=this.order.orderedItems.length
+  //    this.sharedProp.countOrderItems=value
+  //  }
    resetCart(){
     this.order.id=null;
     this.order.invoiceAddress="";
@@ -31,12 +38,13 @@ export class ShoppingCartService {
     this.order.userId=null;
     this.order.orderedItems=[];
     this.order.orderTotal=0;
-    this.order.saved=false
+    this.order.saved=false;
+    this.sharedProp.countOrderItems=null;
    }
 
    addNewItem(newItem:OrderedItem){
      this.order.orderedItems.push(newItem)
-
+     this.sharedProp.countOrderItems=this.order.orderedItems.length
    }
 
    totalPrice(){
@@ -45,9 +53,6 @@ export class ShoppingCartService {
     this.order.orderTotal+=(data.productPrice*data.productQuantity)
     })
   
-   }
-   updateSaveStatus(status:boolean){
-   this.order.saved=status;
    }
    deleteItem(itemId:number){
    const itemToDelete=this.order.orderedItems.find(item=>item.productId===itemId);

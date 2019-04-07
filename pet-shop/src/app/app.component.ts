@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SecurityServiceService } from './services/security-service.service';
 import { UserAuth } from './models/userauth';
 import { Router } from '@angular/router';
 import { ShoppingCartService } from './services/shopping-cart.service';
 import { Order } from './models/order';
 import { DatabaseService } from './services/database.service';
+import { SharedPropertiesService } from './services/shared-properties.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'pet-shop';
   userAuthObject: UserAuth = null;
   pendingOrder: Order;
@@ -19,10 +20,15 @@ export class AppComponent {
   constructor(private securityService: SecurityServiceService,
     private router: Router,
     private cartService: ShoppingCartService,
-    private dataService: DatabaseService) {
+    private dataService: DatabaseService,
+    private sharedProp: SharedPropertiesService) {
     this.userAuthObject = this.securityService.userAuthObject
+  
   }
 
+ get countOrder():number{
+   return this.sharedProp.countOrderItems
+ }
   logout() {
     this.securityService.logOut()
     this.router.navigate(['/home'])
@@ -38,5 +44,7 @@ export class AppComponent {
 
 
   }
+  ngOnInit() {
+   }
+
 }
-//!this.pendingOrder.saved  &&

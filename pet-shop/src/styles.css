@@ -118,3 +118,17 @@ h1,h2,h3,h4,h5,h6{
 .fas{
     cursor: pointer;
 }
+.marker{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 3px;
+    right: 5px;
+    border-radius: 50px;
+    background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+}
