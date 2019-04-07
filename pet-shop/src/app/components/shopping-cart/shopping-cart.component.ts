@@ -1,50 +1,72 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { Order } from 'src/app/models/order';
 import { OrderedItem } from 'src/app/models/ordered-item';
 import { NgModel } from '@angular/forms';
+import { SecurityServiceService } from 'src/app/services/security-service.service';
+import { EventEmitter } from 'events';
+import { Router, ActivatedRoute } from '@angular/router';
+import { DatabaseService } from 'src/app/services/database.service';
+import { TrackerError } from 'src/app/models/traker-error';
 
 @Component({
   selector: 'app-shoping-cart',
   templateUrl: './shopping-cart.component.html',
   styleUrls: ['./shopping-cart.component.css']
 })
-export class ShoppingCartComponent implements OnInit,AfterViewInit {
+export class ShoppingCartComponent implements OnInit{
   private currentOrder:Order;
-// @ViewChildren(NgModel) quantityInput !: QueryList<NgModel>;
+  private isLogedIn:boolean;
+  public placedOrder:Order;
+  public userName: string;
 
 
-  constructor(private cartService:ShoppingCartService) { }
+  constructor(private cartService:ShoppingCartService, 
+              private securityService:SecurityServiceService, 
+              private router: Router,
+              private route: ActivatedRoute,
+              private dataBaseServer: DatabaseService) { }
 
 
-
+  
   deleteItem(itemId:number){
     this.cartService.deleteItem(itemId); 
-    this.totalPrice()
+    this.cartService.totalPrice()
     console.log(this.currentOrder)
     console.log(this.cartService.order)
   }
-
-  totalPrice(){
-  this.currentOrder.orderTotal=0;
-  this.currentOrder.orderedItems.forEach(data=>{
-  this.currentOrder.orderTotal+=(data.productPrice*data.productQuantity)
-   })
+  displayTotalPrice():void{
+  this.cartService.totalPrice();
+  }
+  placeOrder(){
+    if(this.securityService.userAuthObject.isAuthenticated){
+    //this.currentOrder.saved=true;
+    this.dataBaseServer.addOrder(this.currentOrder).subscribe(
+      (data:Order)=>{
+        this.placedOrder=data;
+        this.cartService.resetCart()
+     //   this.cartService.updateSaveStatus(data.saved)
+        console.log(data)
+        
+      },
+      (error:TrackerError)=>console.log(error.friendlyMessage)
+    )
+    }else{
+     this.router.navigate(['/login'],
+     {queryParams:{shoppingCartUrl: this.route.snapshot.url}})
+    }
   }
 
-  ngAfterViewInit():void{
-    // console.log(this.quantityInput)
-  
-    // this.quantityInput.changes.subscribe(
-    //   ()=>console.log("hjgfdsgfds")
-    // )
-  }
 
-  
   ngOnInit() {
+   
    this.currentOrder= this.cartService.order;
-   this.totalPrice()
-   console.log(this.currentOrder)
+   this.currentOrder.userId=this.securityService.userAuthObject.userId;
+   this.currentOrder.invoiceAddress=this.securityService.userAuthObject.userAddress;
+   this.currentOrder.schippingAdress=this.securityService.userAuthObject.userShippingAddress;
+   this.isLogedIn=this.securityService.userAuthObject.isAuthenticated;
+   this.userName=this.securityService.userAuthObject.userFullName
+   this.cartService.totalPrice()
   }
 
 }

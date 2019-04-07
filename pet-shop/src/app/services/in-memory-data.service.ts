@@ -90,28 +90,36 @@ export class InMemoryDataService implements InMemoryDbService {
       invoiceAddress:"Invoice Address",
       schippingAdress:"Shipping Addres",
       orderedItems:[{productId:9,productName:"ceva",productPrice:88, productQuantity:2},{productId:5,productName:"sapca",productPrice:78, productQuantity:3}],
-      orderTotal:410
+      orderTotal:410,
+      saved:true
+     
     }]
 
     const loginObjects:UserAuth[]=[{
       id:11,
       userId:111,
       userFullName:"Radan Olga (admin)",
+      userAddress:"Buna ziua nr 12",
+      userShippingAddress:"Buna ziua Nr 12 shipping address",
       userName:"olgaradan",
       password:"1234",
       authToken:"fhgkfh7ugd4",
       isAuthenticated:true,
       hasAdminRole:true,
+      
     },
     {
       id:12,
       userId:222,
       userFullName:"Fabiana Panait (user)",
+      userAddress:"Calea Manastur",
+      userShippingAddress:"Calea Manastur shipping address",
       userName:"fabianapanait",
       password:"1234",
       authToken:"hgdfsa5218jjgh",
       isAuthenticated:true,
       hasAdminRole:false,
+      
     }
     ]
 

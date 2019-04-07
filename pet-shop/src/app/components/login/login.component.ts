@@ -3,9 +3,7 @@ import { User } from '../../models/user';
 import { UserAuth } from '../../models/userauth';
 import { SecurityServiceService } from '../../services/security-service.service';
 import { NgForm } from '../../../../node_modules/@angular/forms';
-import { Router, NavigationEnd, RoutesRecognized, ActivatedRoute } from '../../../../node_modules/@angular/router';
-import { filter, pairwise } from '../../../../node_modules/rxjs/operators';
-import { from } from 'rxjs';
+import { Router, ActivatedRoute } from '../../../../node_modules/@angular/router';
 import { TrackerError } from 'src/app/models/traker-error';
 
 @Component({
@@ -17,7 +15,7 @@ export class LoginComponent implements OnInit {
   private user: User = new User();
   private userAuthObject: UserAuth;
   private returnUrl: string;
-  x: boolean = true
+  private shoppingCartUrl: string
   constructor(private securityservice: SecurityServiceService, private router: Router, private route: ActivatedRoute) {
 
   }
@@ -29,10 +27,13 @@ export class LoginComponent implements OnInit {
 
         this.userAuthObject = this.securityservice.userAuthObject;
 
+
         if (this.userAuthObject.isAuthenticated) {
           if (this.returnUrl) {
             this.router.navigateByUrl(this.returnUrl);
 
+          } else if (this.shoppingCartUrl) {
+            this.router.navigateByUrl(this.shoppingCartUrl)
           } else {
             this.router.navigate(['/home'])
 
@@ -52,7 +53,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.returnUrl = this.route.snapshot.queryParamMap.get("returnUrl")
+    this.returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
+    this.shoppingCartUrl = this.route.snapshot.queryParamMap.get("shoppingCartUrl");
   }
 
 }

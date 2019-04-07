@@ -11,8 +11,7 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
   providedIn: 'root'
 })
 export class SecurityServiceService {
-  userAuthObject: UserAuth = new UserAuth()
-  returnUrl: string;
+  userAuthObject: UserAuth = new UserAuth();
 
   private httpErrorhandler(error: HttpErrorResponse): Observable<TrackerError> {
     let dataError = new TrackerError()

@@ -7,4 +7,6 @@ export class Order {
     schippingAdress:string;
     orderedItems:OrderedItem[];
     orderTotal:number;
+    saved:boolean;
+
 }

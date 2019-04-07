@@ -41,7 +41,7 @@
                     </div>
                   </div>
 
-                  <button type="submit" class="btn btn btn-secondary ml-auto" [disabled]="!loginForm.valid">Log in</button>
+                  <button type="submit" class="btn btn-secondary ml-auto" [disabled]="!loginForm.valid">Log in</button>
                   <div class="alert alert-danger mt-2" *ngIf="userAuthObject && !userAuthObject.isAuthenticated">
                     Invalid Username or Password
                   </div>

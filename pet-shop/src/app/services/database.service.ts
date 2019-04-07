@@ -68,4 +68,12 @@ export class DatabaseService {
     )
   }
 
+  addOrder(newOrder:Order):Observable<Order|TrackerError>{
+    let dataUrl=`api/orders`;
+    return this.http.post<Order>(dataUrl,newOrder)
+    .pipe(
+      catchError(error=>this.httpErrorhandler(error))
+    )
+  }
+
 }

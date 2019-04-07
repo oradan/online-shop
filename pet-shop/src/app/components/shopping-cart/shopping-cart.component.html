@@ -1,41 +1,74 @@
 <div class="container">
   <div class="col-12 col-md-10 m-auto py-5">
+    <!-- <h2 class="text-center"  *ngIf="!emptyCart"> You have nothing in the cart</h2> -->
     <div class="card">
       <div class="card-header">
-        Your shopping cart
+        {{placedOrder ? " Current order details" : "Your current shopping cart"}}
       </div>
 
-      <div class="card-body">
-        <table class="table table-striped text-center">
-          <thead>
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col"> Name</th>
-              <th scope="col"> Quantity</th>
-              <th scope="col">Price</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let item of currentOrder.orderedItems; index as i">
-              <th scope="row">{{ i + 1 }}</th>
-              <td>{{item.productName}}</td>
-              <td> <input type="number" class="form-control" id="item-quantity"
-                  required 
-                  #productQuantity="ngModel"
-                  [(ngModel)]="item.productQuantity" 
-                  name="quantity" 
-                  (change)="totalPrice()"
-                  [ngClass]="{'is-invalid':(productQuantity.touched||productQuantity.dirty) && !productQuantity.valid}"></td>
-              <td>Price {{item.productPrice}}</td>
-              <td><i class="far fa-trash-alt fa-lg" (click)="deleteItem(item.productId)"></i></td>
-            </tr>
-          </tbody>
-        </table>
-        <div class="d-flex align-items-center">
-         <div class="product-price">Total Price {{currentOrder.orderTotal}} RON </div>
+      <div class="card-body" >
+        <div class="order" *ngIf="!placedOrder">
+          <table class="table table-striped text-center">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col"> Name</th>
+                <th scope="col"> Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of currentOrder.orderedItems; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{item.productName}}</td>
+                <td> <input type="number" class="form-control" id="item-quantity" required #productQuantity="ngModel"
+                    [(ngModel)]="item.productQuantity" name="quantity{{i}}" (change)="displayTotalPrice()" [ngClass]="{'is-invalid':(productQuantity.touched||productQuantity.dirty) && !productQuantity.valid}"></td>
+                <td>Price {{item.productPrice}}</td>
+                <td><i class="far fa-trash-alt fa-lg" (click)="deleteItem(item.productId)"></i></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="d-flex align-items-center">
+            <div class="product-price">Total Price {{currentOrder.orderTotal}} RON </div>
+            <button class="btn btn btn-secondary ml-auto" (click)="placeOrder()">{{ isLogedIn ? 'Continue' : 'Log In toContinue'}}</button>
+          </div>
+        </div>
+        <div class="placed-order" *ngIf="placedOrder">
+         <div>Order id: {{placedOrder.id}}</div>
+         <div>Name: {{userName}}</div>
+         <div>Addres: {{placedOrder.invoiceAddress}}</div>
+         <div>Shipping Address: {{placedOrder.schippingAdress}}</div>
+         <div class="order-items">
+           <table class="table my-5">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price/unit</th>
+                  <th scope="col">Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of placedOrder.orderedItems; index as i">
+                  <th scope="row">{{i+1}}</th>
+                  <td>{{item.productName}}</td>
+                  <td>{{item.productQuantity}}</td>
+                  <td>{{item.productPrice}}</td>
+                  <td>{{item.productQuantity*item.productPrice}}</td>
+                </tr>
+             
+              </tbody>
+            </table>
+            <div class="text-right">Total Price {{placedOrder.orderTotal}} RON </div>
+         </div>
+
         </div>
 
+      </div>
+      <div class="card-footer text-right">
+          <button type="button" class="btn btn-secondary" *ngIf="placedOrder">Buy Now</button>
       </div>
     </div>
 

@@ -46,7 +46,6 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
       {path:'products/:id',component:ProductDetailsComponent},
       {path:'products/:id/edit',component:EditProductComponent,canActivate:[AuthGuard],data:{activateRules:"hasAdminRole"}},
       {path:'add-product',component: AddProductComponent,canActivate:[AuthGuard],data:{activateRules:"hasAdminRole"}},
-      // {path:'shopping-catr',component: ShoppingCartComponent,canActivate:[AuthGuard],data:{activateRules:"isAuthenticated"}},
       {path:'shopping-catr',component: ShoppingCartComponent},
       {path:'orders',component: OrdersListComponent,canActivate:[AuthGuard],data:{activateRules:"hasAdminRole"}},
       {path:'login',component:LoginComponent},
