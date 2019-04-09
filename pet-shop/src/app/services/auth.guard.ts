@@ -12,15 +12,14 @@ export class AuthGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    let rulesToActivate:string=next.data['rulesToActivate']
-
-    if(this.securityService.userAuthObject.isAuthenticated && this.securityService.userAuthObject[rulesToActivate]){
+    let activateRules:string =next.data["activateRules"]
+    if(this.securityService.userAuthObject.isAuthenticated && this.securityService.userAuthObject[activateRules]){
       return true
     }else{
       this.router.navigate(["/login"],
-      {queryParams:{returnUrl: state.url}})
+      {queryParams:{returnUrl: state.url}});
+      return false
     }
    
   }
-  
 }

@@ -17,6 +17,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { FeatureCategoriesComponent } from './components/feature-categories/feature-categories.component';
 import { AuthGuard } from './services/auth.guard';
+import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthGuard } from './services/auth.guard';
     HomeComponent,
     AddProductComponent,
     EditProductComponent,
-    FeatureCategoriesComponent
+    FeatureCategoriesComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,
@@ -42,9 +44,10 @@ import { AuthGuard } from './services/auth.guard';
       {path:'',redirectTo:'home',pathMatch:'full'},
       {path:'products',component: ListViewComponent},
       {path:'products/:id',component:ProductDetailsComponent},
-      {path:'products/:id/edit',component:EditProductComponent,canActivate:[AuthGuard],data:{rulesToActivate:"hasAdminRole"}},
-      {path:'add-product',component: AddProductComponent,canActivate:[AuthGuard],data:{rulesToActivate:"hasAdminRole"}},
-      {path:'orders',component: OrdersListComponent,canActivate:[AuthGuard],data:{rulesToActivate:"hasAdminRole"}},
+      {path:'products/:id/edit',component:EditProductComponent,canActivate:[AuthGuard],data:{activateRules:"hasAdminRole"}},
+      {path:'add-product',component: AddProductComponent,canActivate:[AuthGuard],data:{activateRules:"hasAdminRole"}},
+      {path:'shopping-catr',component: ShoppingCartComponent},
+      {path:'orders',component: OrdersListComponent,canActivate:[AuthGuard],data:{activateRules:"hasAdminRole"}},
       {path:'login',component:LoginComponent},
       {path:'**',component:PageNotFoundComponent}
 

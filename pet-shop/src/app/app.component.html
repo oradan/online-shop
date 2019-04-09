@@ -8,6 +8,7 @@
     <a class="nav-link" [routerLink]="['/add-product']" *ngIf="userAuthObject.hasAdminRole">Add Product</a>
     <div class="ml-auto nav">
       <a class="nav-link"  *ngIf="userAuthObject.userFullName">{{userAuthObject.userFullName}}</a>
+    <a class="nav-link position-relative" [routerLink]="['/shopping-catr']"><i class="fas fa-cart-plus fa-2x text-light"></i><span class="marker" *ngIf="countOrder">{{countOrder}}</span></a>
       <a class="nav-link" [routerLink]="['/login']" *ngIf="!userAuthObject.isAuthenticated">Login</a>
       <a class="nav-link"  (click)="logout()" *ngIf="userAuthObject.isAuthenticated">Log Out</a>
     </div>
@@ -17,4 +18,4 @@
 <div >
     <router-outlet></router-outlet>
 </div>
-<dir class="footer"></dir>
+<div class="footer"></div>

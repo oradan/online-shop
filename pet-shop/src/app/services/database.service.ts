@@ -68,12 +68,12 @@ export class DatabaseService {
     )
   }
 
-  getAllUserAuth():Observable<UserAuth[]|TrackerError>{
-    const dataUrl=`api/loginObjects`;
-    return this.http.get<UserAuth[]>(dataUrl)
+  addOrder(newOrder:Order):Observable<Order|TrackerError>{
+    let dataUrl=`api/orders`;
+    return this.http.post<Order>(dataUrl,newOrder)
     .pipe(
       catchError(error=>this.httpErrorhandler(error))
     )
-
   }
+
 }
