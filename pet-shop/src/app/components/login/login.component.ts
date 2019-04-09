@@ -23,11 +23,12 @@ export class LoginComponent implements OnInit {
        
         this.userAuthObject=data
         if(this.retunnUrl){
-       // this.router.navigateByUrl(this.retunnUrl)
+        //  var x=
+       this.router.navigateByUrl(this.retunnUrl)
         
-        this.router.navigate([this.retunnUrl])
-        console.log( this.router.navigate([this.retunnUrl]))
-       console.log(typeof(this.retunnUrl)) 
+      //   this.router.navigate(['/add-product'])
+      //  console.log( this.retunnUrl)
+      //  console.log(typeof(this.retunnUrl)) 
       }
     },
     ()=>this.userAuthObject= new UserAuth()
