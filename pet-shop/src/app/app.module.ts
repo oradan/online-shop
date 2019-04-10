@@ -18,6 +18,7 @@ import { EditProductComponent } from './components/edit-product/edit-product.com
 import { FeatureCategoriesComponent } from './components/feature-categories/feature-categories.component';
 import { AuthGuard } from './services/auth.guard';
 import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.component';
+import { PayOrderComponent } from './components/pay-order/pay-order.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
     AddProductComponent,
     EditProductComponent,
     FeatureCategoriesComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    PayOrderComponent
   ],
   imports: [
     BrowserModule,
@@ -48,6 +50,7 @@ import { ShoppingCartComponent } from './components/shopping-cart/shopping-cart.
       {path:'add-product',component: AddProductComponent,canActivate:[AuthGuard],data:{activateRules:"hasAdminRole"}},
       {path:'shopping-catr',component: ShoppingCartComponent},
       {path:'orders',component: OrdersListComponent,canActivate:[AuthGuard],data:{activateRules:"hasAdminRole"}},
+      {path:'pay-order',component: PayOrderComponent,canActivate:[AuthGuard],data:{activateRules:"isAuthenticated"}},
       {path:'login',component:LoginComponent},
       {path:'**',component:PageNotFoundComponent}
 
