@@ -23,7 +23,6 @@ export class AddProductComponent implements OnInit {
     this.dataservice.addProduct(this.newProduct).subscribe(
       (data:Product)=>console.log(data),
       (err:TrackerError)=> console.log(err),
-      ()=>console.log(Response)
     )
     addProductForm.reset()
     this.router.navigate(['/products'])

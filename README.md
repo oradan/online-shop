@@ -39,7 +39,6 @@ The application is a prototype to be improved with:
 
 1 Products page
 •	The option to filter the products by category name, price range , color ,size
-•	To implement a clicking effect on shopping cart icon
 
 2 Product Details
 •	Implement Related products feature, display in a carousel
@@ -61,6 +60,7 @@ The application is a prototype to be improved with:
 9 Implement an Order Trakker functionality in order to research the user preferences 
 10 Implement the status functionality on orders pending or payd
 11 At this stage the app is not responsive / implement the responsive design
+12 Add browse/upload feature for the images 
 
 App-flow
 
@@ -75,9 +75,9 @@ Username: fabianapanait / Pasword: 1234
 
 DETAILPAGE => The user can see the product details or add to cart. The users with admin role can also edit or delete the product. 
 
-ORDERS PAGE/ ADD PRODUCT this pages can be accessed only by users with admin     role (olgaradan/1234) by clicking Add product button, the product is saved in database.
+ORDERS PAGE/ ADD PRODUCT this pages can be accessed only by users with admin     role (olgaradan/1234) by clicking Add product button, the product is saved in database. To add images please use the following path "assets/images/toys-full/4.jpg" , the browse feature will be implemented as improvement
 
-SHOPING CART => this page show current selected items. The user can edit the quantity and the total price is updated. If the user is not logged-in in order to continue he must log-in, in this moment the order is saved in data base and the user can pay the order.  If the user did not accessed the “continue” button from shopping-cart, he did not want to buy at that moment, the order is saved in data base when the user log-out.
+SHOPING CART => this page show current selected items. The user can edit the quantity and the total price is updated. If the user is not logged-in in order to continue he must log-in, to save the order user must click the button "continue" in this moment the order is saved in data base and the user can pay the order.  If the user did not accessed the “continue” button from shopping-cart, he did not want to buy at that moment, the order is saved in data base when the user log-out.
 
 
 

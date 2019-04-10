@@ -5,7 +5,9 @@ body{
 h1,h2,h3,h4,h5,h6{
     color:#55c2b3;
 }
-
+.container{
+    min-height: calc(100vh - 150px)
+}
 .nab-bar,.footer{
     background-color:black;
     color:white;
@@ -131,4 +133,40 @@ h1,h2,h3,h4,h5,h6{
     align-items: center;
     font-size: 12px;
     font-weight: bold;
+}
+
+
+.product-price{
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.cart-link{
+    text-transform: uppercase;
+    color: black;
+    width: 200px;
+    text-align: center;
+    padding: 13px;
+    text-decoration: none;
+    font-weight: 700
+
+    
+}
+.btn-style{
+    color: white; 
+    background-color: black;
+    
+}
+
+
+.modal-cart-items{
+    -webkit-box-flex:0;
+    -ms-flex:0 0 50%;
+        flex:0 0 50%
+}
+ 
+.modal-cart-items a:hover{
+    text-decoration: none;
+    color:#66c8bb;
 }

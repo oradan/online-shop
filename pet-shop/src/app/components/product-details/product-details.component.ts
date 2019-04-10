@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Product } from 'src/app/models/product';
@@ -7,6 +7,7 @@ import { SecurityServiceService } from '../../services/security-service.service'
 import { UserAuth } from '../../models/userauth';
 import { OrderedItem } from 'src/app/models/ordered-item';
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
+import { NgbModal } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-product-details',
@@ -20,7 +21,8 @@ export class ProductDetailsComponent implements OnInit {
     private dataservice: DatabaseService, 
     private router: Router, 
     private securityService: SecurityServiceService,
-    private cartService:ShoppingCartService) {
+    private cartService:ShoppingCartService,
+    private modalService: NgbModal) {
     this.userAuthObject = securityService.userAuthObject
   }
 
@@ -33,13 +35,14 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  addToCart(){
+  addToCart(content){
     const orderedItem=new OrderedItem();
     orderedItem.productId=this.product.id;
     orderedItem.productName=this.product.productName;
     orderedItem.productPrice=this.product.productPrice;
     orderedItem.productQuantity=1;
     this.cartService.addNewItem(orderedItem)
+    this.modalService.open(content, { centered: true, size:'lg' })
   }
 
   ngOnInit() {

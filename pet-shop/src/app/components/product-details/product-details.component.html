@@ -34,7 +34,7 @@
           </div>
         </div>
         <div class="cart my-5">
-            <button type="button" class="btn btn-primary cart-btn" (click)="addToCart()">ADD TO CART</button>
+            <button type="button" class="btn btn-primary cart-btn" (click)="addToCart(content)">ADD TO CART</button>
             <button type="button" class="btn btn-primary cart-wish ml-3"><i class="far fa-heart fa-2x"></i></button>
             <button class="btn btn-primary cart-btn ml-3" [routerLink]="['/products']"> BACK TO PRODUCTS </button>
         </div>
@@ -43,6 +43,33 @@
         </div>
       
     </div>
+
+    <ng-template #content let-modal>
+        <div class="modal-header">
+            <h4 class="modal-title">The {{product.productName}} just added to your cart</h4>
+        </div>
+        <div class="modal-body">
+            <div calss="modal-cart" style="display: flex">
+                <div class="modal-cart-items"><img src={{product.productImgUrl}} class="img-fluid" alt="Responsive image"></div>
+                <div class="modal-cart-items m-auto">
+                        <h5 class="card-title mt-1">{{product.productName}}</h5>
+                        <div class="product-price">{{product.productPrice}}
+                                <span>RON</span>
+                        </div>
+                        <p class="card-text my-2">{{product.shortDescription}}</p>
+                        <div class="cart-links d-flex flex-column my-2 ">
+                                <a class="cart-link btn-style my-2" [routerLink]="['/shopping-catr']" (click)="modal.close('Close click')">Go to Cart</a>
+                                <a class="cart-link my-2" [routerLink]="['/products']" (click)="modal.close('Close click')">Continue shopping</a>
+                        </div>
+                </div>
+            </div>
+           
+
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+        </div>
+    </ng-template>
  
   </div>
  

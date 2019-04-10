@@ -4,62 +4,94 @@
 <div class="container margin-top-lg" *ngIf="filteredProductList">
     <h2 class="text-center my-5">Our products</h2>
     <div class="sort-form my-4">
-            <form class="form-row" [formGroup]="sortForm">
-                   <div class="col d-flex align-items-center">
-                          <label class="my-1 mr-2" for="alph-sort">Alphabetically:</label>
-                          <select class="custom-select my-1 mr-sm-2" id="alph-sort" formControlName="alphabeticallySort">
-                            <option value="ascending">Ascending</option>
-                            <option value="descending">Descending</option>
-                          </select>
-                          <i class="fas fa-times" *ngIf="sortForm.get('alphabeticallySort').value" (click)="resetField('alphabeticallySort')"></i>     
-                    </div>
-                    <div class="col d-flex align-items-center">
-                          <label class="my-1 mr-2" for="price-sort">Price</label>
-                          <select class="custom-select my-1 mr-sm-2" id="price-sort" formControlName="priceSort">
-                          <option vallue="none">None</option>
-                          <option value="ascending">Ascending</option>
-                          <option value="descending">Descending</option>
-                        </select>
-                        <i class="fas fa-times" *ngIf="sortForm.get('priceSort').value" (click)="resetField('priceSort')"></i>     
-                    </div>
-                    <div class="col d-flex align-items-center">
-                          <input class="form-control mr-2" type="text" placeholder="Search" formControlName="search">
-                          <i class="fas fa-times" *ngIf="sortForm.get('search').value" (click)="resetField('search')"></i>     
-                    </div>
-                    <div class="col-2 d-flex align-items-center">
-                            <button type="button" class="btn btn-outline-secondary" (click)="resetFilter()">Reset filter</button>
-                    </div>
-                </form>
-     <!-- <div *ngIf="!filteredProductList" class="text-center text-danger">No match result</div> -->
+        <form class="form-row" [formGroup]="sortForm">
+            <div class="col d-flex align-items-center">
+                <label class="my-1 mr-2" for="alph-sort">Alphabetically:</label>
+                <select class="custom-select my-1 mr-sm-2" id="alph-sort" formControlName="alphabeticallySort">
+                    <option value="ascending">Ascending</option>
+                    <option value="descending">Descending</option>
+                </select>
+
+            </div>
+            <div class="col d-flex align-items-center">
+                <label class="my-1 mr-2" for="price-sort">Price</label>
+                <select class="custom-select my-1 mr-sm-2" id="price-sort" formControlName="priceSort">
+                    <option vallue="none">None</option>
+                    <option value="ascending">Ascending</option>
+                    <option value="descending">Descending</option>
+                </select>
+
+            </div>
+            <div class="col d-flex align-items-center">
+                <input class="form-control mr-2" type="text" placeholder="Search" formControlName="search">
+
+            </div>
+            <div class="col-2 d-flex align-items-center">
+                <button type="button" class="btn btn-outline-secondary" (click)="resetFilter()">Reset filter</button>
+            </div>
+        </form>
+   
     </div>
-    <div class="row" >
-        
+    <div class="row">
+
         <div class="home-main col-12  col-md-6 col-lg-4 col-xl-3 my-2" *ngFor="let product of filteredProductList | slice: (page-1) * pageSize : (page-1) * pageSize + pageSize">
             <div class="card m-auto" style="width: 16rem;">
                 <img class="card-img-top" src={{product.productImgUrl}} alt="Card image cap">
                 <div class="card-body">
-                  <h5 class="card-title mt-1">{{product.productName}}</h5>
-                  <p class="card-text">{{product.shortDescription}}</p>
-                  <div class="d-flex justify-content-between align-items-center ">
-                        <h5>{{product.productPrice}} <span>RON</span></h5>
-                        <i class="fas fa-cart-plus fa-2x" (click)="addToCart(product)" ngbPopover="Add me to Cart" triggers="mouseenter:mouseleave" ></i>
-                  </div>
-                  
+                    <h5 class="card-title mt-1">{{product.productName}}</h5>
+                    <p class="card-text">{{product.shortDescription}}</p>
+                    <div class="d-flex justify-content-between align-items-center ">
+                        <h5>{{product.productPrice}}
+                            <span>RON</span>
+                        </h5>
+                        <i class="fas fa-cart-plus fa-2x" (click)="addToCart(product,content)"></i>
+                    </div>
+
                 </div>
                 <div class="card-footer d-flex">
-                            <button type="button" class="btn btn-outline-secondary"  [routerLink]="['/products',product.id]">Details</button>
-                            <button type="button" class="btn btn-outline-secondary ml-2"  [routerLink]="['/products',product.id,'edit']" *ngIf="userAuthObject.hasAdminRole">Edit</button>
-                            <button type="button" class="btn btn-outline-secondary ml-2" (click)="deleteItemDataBase(product.id,product.productName) " *ngIf="userAuthObject.hasAdminRole">Delete</button>
-                 
+                    <button type="button" class="btn btn-outline-secondary" [routerLink]="['/products',product.id]">Details</button>
+                    <button type="button" class="btn btn-outline-secondary ml-2" [routerLink]="['/products',product.id,'edit']" *ngIf="userAuthObject.hasAdminRole">Edit</button>
+                    <button type="button" class="btn btn-outline-secondary ml-2" (click)="deleteItemDataBase(product.id,product.productName) "
+                        *ngIf="userAuthObject.hasAdminRole">Delete</button>
+
                 </div>
-                </div>
-              </div>
-            
-                           
-       
-  
+                <ng-template #content let-modal>
+                    <div class="modal-header">
+                        <h4 class="modal-title">The {{product.productName}} just added to your cart</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div calss="modal-cart" style="display: flex">
+                            <div class="modal-cart-items">
+                                <img src={{product.productImgUrl}} class="img-fluid" alt="Responsive image">
+                            </div>
+                            <div class="modal-cart-items m-auto">
+                                <h5 class="card-title mt-1">{{product.productName}}</h5>
+                                <div class="product-price">{{product.productPrice}}
+                                    <span>RON</span>
+                                </div>
+                                <p class="card-text my-2">{{product.shortDescription}}</p>
+                                <div class="cart-links d-flex flex-column my-2 ">
+                                    <a class="cart-link btn-style my-2" [routerLink]="['/shopping-catr']" (click)="modal.close('Close click')">Go to Cart</a>
+                                    <a class="cart-link my-2" [routerLink]="['/products']" (click)="modal.close('Close click')">Continue shopping</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-light" (click)="modal.close('Close click')">Close</button>
+                    </div>
+                </ng-template>
+            </div>
         </div>
 
-        <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="filteredProductList.length" class="d-flex justify-content-center my-5" ></ngb-pagination>
+
+
+
     </div>
 
+
+
+    <ngb-pagination [(page)]="page" [pageSize]="pageSize" [collectionSize]="filteredProductList.length" class="d-flex justify-content-center my-5"></ngb-pagination>
+</div>

@@ -15,70 +15,94 @@ export class InMemoryDataService implements InMemoryDbService {
   createDb(){
     const products : Product[]=[{
       id:1,
-      productName:"hainuta",
+      productName:"Jumpsuit orange",
       productPrice:50,
-      productImgUrl:"assets/images/WholesalePetShop.jpg",
+      productImgUrl:"assets/images/clothes/1.jpg",
       shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
       productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
     },{
       id:2,
-      productName:"gecuta",
+      productName:"Jumpsuit beige",
       productPrice:41,
-      productImgUrl:"assets/images/pic1.jpg",
+      productImgUrl:"assets/images/clothes/3.jpg",
       shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
       productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
     },{
       id:3,
-      productName:"palton",
+      productName:"Bed",
       productPrice:28,
-      productImgUrl:"assets/images/pic2.jpg",
+      productImgUrl:"assets/images/accesories/5-bed.jpg",
       shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
       productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
     },{
       id:4,
-      productName:"palarie",
+      productName:"Snuggle-bed",
       productPrice:23,
-      productImgUrl:"assets/images/pic3.jpg",
+      productImgUrl:"assets/images/accesories/6-snuggle-bed.jpg",
       shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
       productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
     },
     {
       id:5,
-      productName:"sapca",
+      productName:"Bandana",
       productPrice:78,
-      productImgUrl:"assets/images/WholesalePetShop.jpg",
+      productImgUrl:"assets/images/accesories/3-bandana.jpg",
       shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
       productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
     },
     {
       id:6,
-      productName:"test6",
+      productName:"Soft Breathable Cat",
       productPrice:854,
-      productImgUrl:"assets/images/pic4.jpg",
+      productImgUrl:"assets/images/harness/3.jpg",
       shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
       productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
     },
     {
       id:7,
-      productName:"ochelari",
+      productName:"Blue Reflective Harness",
       productPrice:99,
-      productImgUrl:"assets/images/WholesalePetShop.jpg",
+      productImgUrl:"assets/images/harness/2.jpg",
       shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
       productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
     },
     {
       id:8,
-      productName:"pix",
+      productName:"Black jump",
       productPrice:102,
-      productImgUrl:"assets/images/pic1.jpg",
+      productImgUrl:"assets/images/clothes/3.jpg",
       shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
       productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
     },
     {
       id:9,
-      productName:"ceva",
+      productName:"Donnut",
       productPrice:88,
-      productImgUrl:"assets/images/pic2.jpg",
+      productImgUrl:"assets/images/toys/1.jpg",
+      shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
+      productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+    },
+    {
+      id:10,
+      productName:"Ball toy",
+      productPrice:88,
+      productImgUrl:"assets/images/toys/4.jpg",
+      shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
+      productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+    },
+    {
+      id:11,
+      productName:"Bone ",
+      productPrice:88,
+      productImgUrl:"assets/images/toys/2.jpg",
+      shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
+      productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
+    },
+    {
+      id:12,
+      productName:"Nice toy",
+      productPrice:88,
+      productImgUrl:"assets/images/toys-full/4.jpg",
       shortDescription:"Lorem Ipsum has been the industry's standard dummy text ",
       productDescription:"Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,"
     }

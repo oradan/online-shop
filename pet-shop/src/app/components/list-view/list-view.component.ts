@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation  } from '@angular/core';
 import { DatabaseService } from 'src/app/services/database.service';
 import { Product } from 'src/app/models/product';
 import { TrackerError } from 'src/app/models/traker-error';
@@ -8,6 +8,7 @@ import { SecurityServiceService } from '../../services/security-service.service'
 import { ShoppingCartService } from 'src/app/services/shopping-cart.service';
 import { OrderedItem } from 'src/app/models/ordered-item';
 import { SharedPropertiesService } from 'src/app/services/shared-properties.service';
+import { NgbModal } from '../../../../node_modules/@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -26,7 +27,8 @@ export class ListViewComponent implements OnInit {
   constructor(private dataService: DatabaseService,
     private fb: FormBuilder,
     private securityService: SecurityServiceService,
-    private cartService: ShoppingCartService) {
+    private cartService: ShoppingCartService,
+    private modalService: NgbModal) {
     this.userAuthObject = this.securityService.userAuthObject
   }
 
@@ -78,13 +80,14 @@ export class ListViewComponent implements OnInit {
 
   }
 
-  addToCart(item: Product) {
+  addToCart(item: Product,content) {
     const orderedItem = new OrderedItem();
     orderedItem.productId = item.id;
     orderedItem.productName = item.productName;
     orderedItem.productPrice = item.productPrice;
     orderedItem.productQuantity = 1;
     this.cartService.addNewItem(orderedItem)
+    this.modalService.open(content, { centered: true, size:'lg' })
   }
 
   ngOnInit() {
