@@ -52,15 +52,19 @@ The application is a prototype to be improved with:
 4 Shopping-cart page
 •	To implement the option to see a personal order history and status.
 •	The payment functionality
+.   To implement the possibility to change the invoice/shipping address on the shipping-cart. At this stage the invoice/shipping address is taken from the userAuthObject 
 
-5 Registration functionality
+5 Registration functionality at this stage there are two users that are hard coded in the database.
 6 Improve the login and add to cart code
 7 Fetching data with resolvers
 8 Implement an Interceptors Service in order to add headers to request
-9 Implement an Order Trakker functionality in order to research the user preferences 
-10 Implement the status functionality on orders pending or payd
+9 Implement an Order Trekker functionality in order to research the user preferences 
+10 Implement the status functionality on orders in order to know if the specific order is pending or payed
 11 At this stage the app is not responsive / implement the responsive design
 12 Add browse/upload feature for the images 
+13 Implement a custom validation method to avoid completing the negative quantity values in the quantity fields.
+14 User component => this will be the component where user can manage his account(see all orders, update personal data....)
+15 Forgot the password functionality 
 
 App-flow
 
