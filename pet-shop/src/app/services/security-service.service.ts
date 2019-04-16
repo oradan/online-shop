@@ -51,7 +51,7 @@ export class SecurityServiceService {
             if (this.userAuthObject.userName !== "") {
               localStorage.setItem("authToken", this.userAuthObject.authToken)
             }
-
+           
           }
 
         ),

@@ -13,7 +13,7 @@ import { LoginComponent } from './components/login/login.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddProductComponent } from './components/add-product/add-product.component';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { EditProductComponent } from './components/edit-product/edit-product.component';
 import { FeatureCategoriesComponent } from './components/feature-categories/feature-categories.component';
 import { AuthGuard } from './services/auth.guard';

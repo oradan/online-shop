@@ -32,14 +32,18 @@ export class AppComponent implements OnInit{
   logout() {
     this.securityService.logOut()
     this.router.navigate(['/home'])
-    this.cartService.totalPrice()
+   // this.cartService.totalPrice()
     this.pendingOrder = this.cartService.order
     this.pendingOrder.invoiceAddress = this.securityService.userAuthObject.userAddress;
     this.pendingOrder.schippingAdress = this.securityService.userAuthObject.userShippingAddress;
     this.pendingOrder.userId = this.securityService.userAuthObject.userId;
     if ( this.pendingOrder.orderedItems.length>0) {
       this.dataService.addOrder(this.pendingOrder).subscribe(
-        (data: Order) => this.cartService.resetCart())
+        (data: Order) => {
+
+          console.log(data)
+          this.cartService.resetCart()
+        })
     } else { console.log("the order have been already saved/ore there is no items") }
 
 

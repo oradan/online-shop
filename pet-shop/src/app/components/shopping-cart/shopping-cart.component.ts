@@ -23,14 +23,16 @@ export class ShoppingCartComponent implements OnInit{
               private securityService:SecurityServiceService, 
               private router: Router,
               private route: ActivatedRoute,
-              private dataBaseServer: DatabaseService
+              private dataBaseServer: DatabaseService,
+            
               ) { }
 
 
   
   deleteItem(itemId:number){
     this.cartService.deleteItem(itemId); 
-    this.cartService.totalPrice()
+   // this.cartService.totalPrice();
+
   }
   displayTotalPrice():void{
   this.cartService.totalPrice();
@@ -60,7 +62,7 @@ export class ShoppingCartComponent implements OnInit{
    this.currentOrder.schippingAdress=this.securityService.userAuthObject.userShippingAddress;
    this.isLogedIn=this.securityService.userAuthObject.isAuthenticated;
    this.userName=this.securityService.userAuthObject.userFullName
-   this.cartService.totalPrice()
+  // this.cartService.totalPrice()
   }
 
 }

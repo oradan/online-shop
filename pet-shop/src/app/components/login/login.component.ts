@@ -41,10 +41,11 @@ export class LoginComponent implements OnInit {
 
         } else {
           this.userAuthObject = new UserAuth()
-
+         
         }
 
         loginForm.reset()
+
       }
     ),
       (error: TrackerError) => console.log(error.friendlyMessage);

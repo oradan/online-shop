@@ -102,6 +102,8 @@ export class ListViewComponent implements OnInit {
     this.sortForm.get('search').valueChanges.subscribe(
       value => this.searchFilter(value)
     )
+
+    
     this.sortForm.get('alphabeticallySort').valueChanges.subscribe(
       value => {
 
@@ -113,6 +115,8 @@ export class ListViewComponent implements OnInit {
         } else { this.filteredProductList = this.products }
       }
     )
+
+    
     this.sortForm.get('priceSort').valueChanges.subscribe(
       value => {
         switch (value) {
@@ -128,6 +132,7 @@ export class ListViewComponent implements OnInit {
           default:
             this.filteredProductList = this.products
         }
+        
       }
     )
     this.dataService.getAllProducts().subscribe(
